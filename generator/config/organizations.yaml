@@ -1,0 +1,28 @@
+overrides:
+  user_ids:
+    absent: true
+  smart_proxy_ids:
+    absent: true
+  compute_resource_ids:
+    absent: true
+  medium_ids:
+    absent: true
+  config_template_ids:
+    absent: true
+  ptable_ids:
+    absent: true
+  provisioning_template_ids:
+    absent: true
+  domain_ids:
+    absent: true
+  realm_ids:
+    absent: true
+  hostgroup_ids:
+    absent: true
+  environment_ids:
+    absent: true
+  subnet_ids:
+    absent: true
+  parent_id:
+    requires: false
+    foreign_class: '::Puppet::Provider::ForemanOrganization::ForemanOrganization'

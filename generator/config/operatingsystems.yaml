@@ -1,0 +1,4 @@
+overrides:
+  medium_ids:
+    readname: media
+    puppetname: media

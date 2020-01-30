@@ -1,0 +1,3 @@
+overrides:
+  account_password:
+    behaviour: :init_only

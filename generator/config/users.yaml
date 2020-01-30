@@ -1,0 +1,11 @@
+composite_namevar:
+  - login
+overrides:
+  default_organization_id:
+    requires: puppet/provider/foreman_organization/foreman_organization
+    foreign_class: '::Puppet::Provider::ForemanOrganization::ForemanOrganization'
+  default_location_id:
+    requires: puppet/provider/foreman_location/foreman_location
+    foreign_class: '::Puppet::Provider::ForemanLocation::ForemanLocation'
+  auth_source_id:
+    absent: true

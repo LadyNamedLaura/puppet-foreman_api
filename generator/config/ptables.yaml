@@ -1,0 +1,5 @@
+overrides:
+  host_ids:
+    absent: true
+  hostgroup_ids:
+    absent: true

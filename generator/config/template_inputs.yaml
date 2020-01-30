@@ -1,0 +1,4 @@
+overrides:
+  template_id:
+    foreign_class: '::Puppet::Provider::ForemanConfigTemplate::ForemanConfigTemplate'
+    requires: puppet/provider/foreman_config_template/foreman_config_template

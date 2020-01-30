@@ -1,0 +1,7 @@
+overrides:
+  provider:
+    puppetname: compute_provider
+  password:
+    behaviour: init_only
+  uuid:
+    absent: true

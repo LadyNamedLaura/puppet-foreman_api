@@ -1,0 +1,4 @@
+composite_namevar:
+  - operatingsystem
+  - template_kind
+# no updated_at

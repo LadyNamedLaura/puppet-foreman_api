@@ -1,0 +1,9 @@
+composite_namevar:
+  - usergroup
+  - name
+
+overrides:
+  auth_source_id:
+    readname: auth_source_ldap
+    foreign_class: '::Puppet::Provider::ForemanAuthSourceLdap::ForemanAuthSourceLdap'
+    requires: puppet/provider/foreman_auth_source_ldap/foreman_auth_source_ldap

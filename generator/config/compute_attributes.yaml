@@ -1,0 +1,6 @@
+composite_namevar:
+  - compute_resource
+  - compute_profile
+
+apiurl: /api/compute_attributes
+detailurl: /api/compute_attributes/:id

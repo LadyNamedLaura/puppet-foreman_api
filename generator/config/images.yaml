@@ -1,0 +1,3 @@
+composite_namevar:
+  - compute_resource
+  - name

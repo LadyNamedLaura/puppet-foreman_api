@@ -1,0 +1,14 @@
+extra:
+  name:
+    puppetname: name
+    readname: name
+    writename: ~
+    type: String
+    desc: name
+    definition_class: AttrDefinition
+    behaviour: :namevar
+overrides:
+  id:
+    type: Numeric
+  value:
+    type: Data

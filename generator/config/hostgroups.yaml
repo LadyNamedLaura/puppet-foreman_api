@@ -1,0 +1,15 @@
+overrides:
+  subnet6_id:
+    foreign_class: '::Puppet::Provider::ForemanSubnet::ForemanSubnet'
+    requires: puppet/provider/foreman_subnet/foreman_subnet
+  puppet_ca_proxy_id:
+    foreign_class: '::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy'
+    requires: puppet/provider/foreman_smart_proxy/foreman_smart_proxy
+  puppet_proxy_id:
+    foreign_class: '::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy'
+    requires: puppet/provider/foreman_smart_proxy/foreman_smart_proxy
+  parent_id:
+    foreign_class: '::Puppet::Provider::ForemanHostgroup::ForemanHostgroup'
+    requires: false
+  config_group_ids:
+    absent: true
