@@ -1,0 +1,43 @@
+require 'puppet_x/foreman_api'
+<%- @attributes.each do | _k, attr | -%>
+<%- if attr[:requires] -%>
+require '<%= attr[:requires] %>'
+<%- end -%>
+<%- end -%>
+
+module ::Puppet::Provider::<%= @rubyname %>
+  class <%= @rubyname %> < ::PuppetX::ForemanApi::EndpointProvider
+    include PuppetX::ForemanApi
+    def self.endpoint
+      @endpoint ||= Endpoint.new(
+        url: '<%= @apiurl %>',
+        detailurl: '<%= @detailurl %>',
+        <%- if @composite_namevar -%>
+        composite_namevar: [<%=
+              @composite_namevar.map { |attr|
+                ":#{attr}"
+              }.join(', ')
+              %>],
+        <%- end -%>
+        attributes: [
+          <%- @attributes.each { |k, attr| -%>
+          <%- if attr.key? :foreign_class -%>
+          <%= attr[:definition_class] %>.new(
+            :<%= attr[:puppetname] %>,
+            '<%= attr[:readname] %>',
+            <%= attr[:writename].inspect %>,
+            <%= attr[:foreign_class] %>,
+            <%- if attr.key? :detailed -%>
+            detailed: <%= attr[:detailed].inspect %>,
+            <%- end -%>
+          ),
+          <%- else -%>
+          <%= attr[:definition_class] %>.new(:<%= attr[:puppetname] %>, '<%= attr[:readname] %>', <%= attr[:writename].inspect %>),
+          <%- end -%>
+          <%- } -%>
+        ],
+      )
+      @endpoint
+    end
+  end
+end

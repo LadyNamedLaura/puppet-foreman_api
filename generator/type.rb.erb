@@ -1,0 +1,38 @@
+require 'puppet/resource_api'
+
+Puppet::ResourceApi.register_type(
+  name: '<%= @pathname %>',
+  docs: <<-EOS,
+      This type provides Puppet with the capabilities to manage foreman <%= @name %>
+    EOS
+  <%- if @composite_namevar -%>
+  title_patterns: [
+    {
+      pattern: %r{^<%=
+        @composite_namevar.map { |attr|
+          "(?<#{attr}>.*[^/])"
+        }.join('/')
+        %>$},
+    },
+  ],
+  <%- end -%>
+  attributes: {
+    ensure: {
+      type:    'Enum[present, absent]',
+      desc:    'Whether this resource should be present or absent on the target system.',
+      default: 'present',
+    },
+    <%- @attributes.each { |k,attr| -%>
+    <%= attr[:puppetname] %>: {
+      type:      <%= attr[:type].inspect %>,
+      desc:      <%= attr[:desc].inspect %>,
+      <%- if attr.key? :behaviour -%>
+      behaviour: <%= attr[:behaviour].to_sym.inspect %>,
+      <%- elsif attr[:writename].nil? -%>
+      behaviour: :read_only,
+      <%- end -%>
+    },
+    <%- } -%>
+  }
+
+)
