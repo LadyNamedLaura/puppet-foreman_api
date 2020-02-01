@@ -11,7 +11,7 @@ module ::Puppet::Provider::ForemanExternalUsergroup
         detailurl: '/api/usergroups/:usergroup_id/external_usergroups/:id',
         composite_namevar: [:usergroup, :name],
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           ForeignKeyAttrDefinition.new(
             :usergroup,
             'usergroup_id',

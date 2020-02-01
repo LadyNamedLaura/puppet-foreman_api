@@ -12,7 +12,7 @@ module ::Puppet::Provider::ForemanImage
         detailurl: '/api/compute_resources/:compute_resource_id/images/:id',
         composite_namevar: [:compute_resource, :name],
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           ForeignKeyAttrDefinition.new(
             :compute_resource,
             'compute_resource_id',

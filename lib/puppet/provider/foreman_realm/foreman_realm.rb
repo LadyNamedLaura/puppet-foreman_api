@@ -11,7 +11,7 @@ module ::Puppet::Provider::ForemanRealm
         url: '/api/realms',
         detailurl: '/api/realms/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "realm[name]"),
           ForeignKeyAttrDefinition.new(
             :realm_proxy,

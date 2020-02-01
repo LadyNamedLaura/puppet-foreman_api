@@ -8,7 +8,7 @@ module ::Puppet::Provider::ForemanOrganization
         url: '/api/organizations',
         detailurl: '/api/organizations/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "organization[name]"),
           AttrDefinition.new(:description, 'description', "organization[description]"),
           ForeignKeyAttrDefinition.new(

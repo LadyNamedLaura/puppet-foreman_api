@@ -9,7 +9,7 @@ module ::Puppet::Provider::ForemanTemplateInput
         url: '/api/templates/:template_id/template_inputs',
         detailurl: '/api/templates/:template_id/template_inputs/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           ForeignKeyAttrDefinition.new(
             :template,
             'template_id',

@@ -11,7 +11,7 @@ module ::Puppet::Provider::ForemanComputeAttribute
         detailurl: '/api/compute_attributes/:id',
         composite_namevar: [:compute_resource, :compute_profile],
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           ForeignKeyAttrDefinition.new(
             :compute_profile,
             'compute_profile_id',

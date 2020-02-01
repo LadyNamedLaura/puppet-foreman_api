@@ -40,10 +40,11 @@ module Config
     'id' => {
       puppetname: 'id',
       readname: 'id',
-      writname: nil,
+      writename: 'id',
       type: 'Integer',
       desc: 'internal numerical id',
       definition_class: 'AttrDefinition',
+      behaviour: :read_only,
     },
   }
   @typetemplate = ERB.new(File.read('type.rb.erb'), nil, '-')

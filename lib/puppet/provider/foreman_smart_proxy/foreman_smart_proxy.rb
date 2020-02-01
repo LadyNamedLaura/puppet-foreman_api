@@ -10,7 +10,7 @@ module ::Puppet::Provider::ForemanSmartProxy
         url: '/api/smart_proxies',
         detailurl: '/api/smart_proxies/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "smart_proxy[name]"),
           AttrDefinition.new(:url, 'url', "smart_proxy[url]"),
           ForeignKeyArrayAttrDefinition.new(

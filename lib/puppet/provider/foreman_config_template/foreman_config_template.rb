@@ -12,7 +12,7 @@ module ::Puppet::Provider::ForemanConfigTemplate
         url: '/api/config_templates',
         detailurl: '/api/config_templates/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "config_template[name]"),
           AttrDefinition.new(:template, 'template', "config_template[template]"),
           AttrDefinition.new(:snippet, 'snippet', "config_template[snippet]"),

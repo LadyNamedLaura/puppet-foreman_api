@@ -8,7 +8,7 @@ module ::Puppet::Provider::ForemanLocation
         url: '/api/locations',
         detailurl: '/api/locations/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "location[name]"),
           AttrDefinition.new(:description, 'description', "location[description]"),
           ForeignKeyAttrDefinition.new(

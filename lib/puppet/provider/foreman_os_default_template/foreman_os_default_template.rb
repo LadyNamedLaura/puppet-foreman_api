@@ -13,7 +13,7 @@ module ::Puppet::Provider::ForemanOsDefaultTemplate
         detailurl: '/api/operatingsystems/:operatingsystem_id/os_default_templates/:id',
         composite_namevar: [:operatingsystem, :template_kind],
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           ForeignKeyAttrDefinition.new(
             :operatingsystem,
             'operatingsystem_id',

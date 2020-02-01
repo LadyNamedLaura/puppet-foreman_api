@@ -11,7 +11,7 @@ module ::Puppet::Provider::ForemanUsergroup
         url: '/api/usergroups',
         detailurl: '/api/usergroups/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "usergroup[name]"),
           AttrDefinition.new(:admin, 'admin', "usergroup[admin]"),
           ForeignKeyArrayAttrDefinition.new(

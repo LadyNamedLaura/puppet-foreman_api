@@ -23,7 +23,7 @@ module ::Puppet::Provider::ForemanHostgroup
         url: '/api/hostgroups',
         detailurl: '/api/hostgroups/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "hostgroup[name]"),
           AttrDefinition.new(:description, 'description', "hostgroup[description]"),
           ForeignKeyAttrDefinition.new(

@@ -9,7 +9,7 @@ module ::Puppet::Provider::ForemanArchitecture
         url: '/api/architectures',
         detailurl: '/api/architectures/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "architecture[name]"),
           ForeignKeyArrayAttrDefinition.new(
             :operatingsystems,

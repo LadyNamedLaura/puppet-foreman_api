@@ -12,7 +12,7 @@ module ::Puppet::Provider::ForemanTemplateCombination
         url: '/api/config_templates/:config_template_id/template_combinations',
         detailurl: '/api/template_combinations/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           ForeignKeyAttrDefinition.new(
             :config_template,
             'config_template_id',

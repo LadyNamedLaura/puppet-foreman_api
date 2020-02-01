@@ -10,7 +10,7 @@ module ::Puppet::Provider::ForemanAuthSourceLdap
         url: '/api/auth_source_ldaps',
         detailurl: '/api/auth_source_ldaps/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "auth_source_ldap[name]"),
           AttrDefinition.new(:host, 'host', "auth_source_ldap[host]"),
           AttrDefinition.new(:port, 'port', "auth_source_ldap[port]"),

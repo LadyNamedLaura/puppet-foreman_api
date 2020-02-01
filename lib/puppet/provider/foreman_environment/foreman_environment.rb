@@ -10,7 +10,7 @@ module ::Puppet::Provider::ForemanEnvironment
         url: '/api/environments',
         detailurl: '/api/environments/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "environment[name]"),
           ForeignKeyArrayAttrDefinition.new(
             :locations,

@@ -13,7 +13,7 @@ module ::Puppet::Provider::ForemanFilter
         detailurl: '/api/filters/:id',
         composite_namevar: [:role, :_permissions],
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           ForeignKeyArrayAttrDefinition.new(
             :_permissions,
             'permissions',

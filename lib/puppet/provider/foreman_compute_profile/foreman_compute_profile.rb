@@ -8,7 +8,7 @@ module ::Puppet::Provider::ForemanComputeProfile
         url: '/api/compute_profiles',
         detailurl: '/api/compute_profiles/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "compute_profile[name]"),
         ],
       )

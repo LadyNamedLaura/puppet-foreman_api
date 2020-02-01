@@ -10,7 +10,7 @@ module ::Puppet::Provider::ForemanRole
         url: '/api/roles',
         detailurl: '/api/roles/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "role[name]"),
           AttrDefinition.new(:description, 'description', "role[description]"),
           ForeignKeyArrayAttrDefinition.new(

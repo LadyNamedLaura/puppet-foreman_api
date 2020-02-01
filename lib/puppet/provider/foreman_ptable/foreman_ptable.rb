@@ -11,7 +11,7 @@ module ::Puppet::Provider::ForemanPtable
         url: '/api/ptables',
         detailurl: '/api/ptables/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "ptable[name]"),
           AttrDefinition.new(:layout, 'layout', "ptable[layout]"),
           AttrDefinition.new(:snippet, 'snippet', "ptable[snippet]"),

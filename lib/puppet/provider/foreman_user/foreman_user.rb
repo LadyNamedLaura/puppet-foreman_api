@@ -14,7 +14,7 @@ module ::Puppet::Provider::ForemanUser
         detailurl: '/api/users/:id',
         composite_namevar: [:login],
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:login, 'login', "user[login]"),
           AttrDefinition.new(:firstname, 'firstname', "user[firstname]"),
           AttrDefinition.new(:lastname, 'lastname', "user[lastname]"),

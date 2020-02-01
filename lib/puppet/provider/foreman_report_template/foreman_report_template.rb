@@ -10,7 +10,7 @@ module ::Puppet::Provider::ForemanReportTemplate
         url: '/api/report_templates',
         detailurl: '/api/report_templates/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "report_template[name]"),
           AttrDefinition.new(:template, 'template', "report_template[template]"),
           AttrDefinition.new(:snippet, 'snippet', "report_template[snippet]"),

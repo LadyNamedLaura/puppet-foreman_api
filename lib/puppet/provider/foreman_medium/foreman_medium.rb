@@ -11,7 +11,7 @@ module ::Puppet::Provider::ForemanMedium
         url: '/api/media',
         detailurl: '/api/media/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "medium[name]"),
           AttrDefinition.new(:path, 'path', "medium[path]"),
           AttrDefinition.new(:os_family, 'os_family', "medium[os_family]"),

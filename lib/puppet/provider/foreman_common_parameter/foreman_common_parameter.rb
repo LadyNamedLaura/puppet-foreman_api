@@ -8,7 +8,7 @@ module ::Puppet::Provider::ForemanCommonParameter
         url: '/api/common_parameters',
         detailurl: '/api/common_parameters/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "common_parameter[name]"),
           AttrDefinition.new(:value, 'value', "common_parameter[value]"),
           AttrDefinition.new(:parameter_type, 'parameter_type', "common_parameter[parameter_type]"),

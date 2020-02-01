@@ -16,7 +16,7 @@ module ::Puppet::Provider::ForemanSubnet
         url: '/api/subnets',
         detailurl: '/api/subnets/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "subnet[name]"),
           AttrDefinition.new(:description, 'description', "subnet[description]"),
           AttrDefinition.new(:network_type, 'network_type', "subnet[network_type]"),

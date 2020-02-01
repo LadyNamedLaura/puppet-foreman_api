@@ -12,7 +12,7 @@ module ::Puppet::Provider::ForemanProvisioningTemplate
         url: '/api/provisioning_templates',
         detailurl: '/api/provisioning_templates/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "provisioning_template[name]"),
           AttrDefinition.new(:template, 'template', "provisioning_template[template]"),
           AttrDefinition.new(:snippet, 'snippet', "provisioning_template[snippet]"),

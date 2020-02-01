@@ -10,7 +10,7 @@ module ::Puppet::Provider::ForemanHttpProxy
         url: '/api/http_proxies',
         detailurl: '/api/http_proxies/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "http_proxy[name]"),
           AttrDefinition.new(:url, 'url', "http_proxy[url]"),
           AttrDefinition.new(:username, 'username', "http_proxy[username]"),

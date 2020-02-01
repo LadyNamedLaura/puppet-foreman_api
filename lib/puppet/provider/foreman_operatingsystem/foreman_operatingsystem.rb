@@ -13,7 +13,7 @@ module ::Puppet::Provider::ForemanOperatingsystem
         url: '/api/operatingsystems',
         detailurl: '/api/operatingsystems/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "operatingsystem[name]"),
           AttrDefinition.new(:major, 'major', "operatingsystem[major]"),
           AttrDefinition.new(:minor, 'minor', "operatingsystem[minor]"),

@@ -11,7 +11,7 @@ module ::Puppet::Provider::ForemanDomain
         url: '/api/domains',
         detailurl: '/api/domains/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "domain[name]"),
           AttrDefinition.new(:fullname, 'fullname', "domain[fullname]"),
           ForeignKeyAttrDefinition.new(

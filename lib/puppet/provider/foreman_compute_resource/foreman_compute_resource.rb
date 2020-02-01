@@ -10,7 +10,7 @@ module ::Puppet::Provider::ForemanComputeResource
         url: '/api/compute_resources',
         detailurl: '/api/compute_resources/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "compute_resource[name]"),
           AttrDefinition.new(:compute_provider, 'provider', "compute_resource[provider]"),
           AttrDefinition.new(:url, 'url', "compute_resource[url]"),
