@@ -248,7 +248,9 @@ module PuppetX
       end
 
       def delete
-        Api.delete(@detailurl)
+        _get_all(:api)
+        url = @endpoint.detailurl.resolve @mapped[:api]
+        url.delete
       end
 
       def update
