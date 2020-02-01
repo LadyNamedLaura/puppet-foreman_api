@@ -3,9 +3,7 @@ class foreman_api(
 ) {
   $resources.each |$type, $instances| {
     $instances.each |$name, $resource| {
-      "foreman_${type}" { $name:
-        * => $resource,
-      }
+      ensure_resource("foreman_${type}", $name, $resource)
     }
   }
 }
