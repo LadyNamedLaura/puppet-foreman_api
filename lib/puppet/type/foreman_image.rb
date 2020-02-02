@@ -24,6 +24,7 @@ Puppet::ResourceApi.register_type(
     compute_resource: {
       type:      "Optional[Variant[String,Integer]]",
       desc:      "ID of compute resource",
+      behaviour: :namevar,
     },
     name: {
       type:      "String",

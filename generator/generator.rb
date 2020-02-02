@@ -131,7 +131,6 @@ class Endpoint
         requires: nil,
       }
       hash[:behaviour] = :namevar if name == 'name'
-      hash[:behaviour] = :namevar if @composite_namevar && @composite_namevar.include?(name)
       if %r{_ids$} =~ name
         typename = name.gsub(%r{_ids$}, '')
         typename = "foreman_#{typename}"
@@ -158,6 +157,7 @@ class Endpoint
       if @overrides.key? name
         hash.merge!(@overrides[name].symbolize_keys)
       end
+      hash[:behaviour] = :namevar if composite_namevar && composite_namevar.include?(hash[:puppetname])
       if hash.key?(:absent) && hash[:absent]
         next nil
       end

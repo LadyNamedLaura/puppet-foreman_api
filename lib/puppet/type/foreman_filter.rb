@@ -29,6 +29,7 @@ Puppet::ResourceApi.register_type(
     role: {
       type:      "Variant[String,Integer]",
       desc:      "",
+      behaviour: :namevar,
     },
     search: {
       type:      "Optional[String]",

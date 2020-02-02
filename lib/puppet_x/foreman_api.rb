@@ -15,7 +15,6 @@ module PuppetX
         end
         @api
       end
-
       def self.request(method, path, params = {}, data = nil, headers = {})
         p "Request #{method} #{path} (#{params}|#{data})"
         r = api.request(method, path, params, data, headers)
@@ -137,7 +136,7 @@ module PuppetX
 
       def set_from_puppet(hash)
         return :undefined unless hash.key? puppetname
-        _to_id(super(hash)[])
+        _to_id(super(hash))
       end
 
       def set_from_api(hash)

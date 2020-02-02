@@ -24,10 +24,12 @@ Puppet::ResourceApi.register_type(
     operatingsystem: {
       type:      "Optional[Variant[String,Integer]]",
       desc:      "ID of operating system",
+      behaviour: :namevar,
     },
     template_kind: {
       type:      "Optional[Variant[String,Integer]]",
       desc:      "",
+      behaviour: :namevar,
     },
     config_template: {
       type:      "Optional[Variant[String,Integer]]",

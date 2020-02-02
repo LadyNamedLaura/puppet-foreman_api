@@ -1,8 +1,10 @@
 composite_namevar:
   - usergroup
-  - name
+  - ldapname
 
 overrides:
+  name:
+    puppetname: ldapname
   auth_source_id:
     readname: auth_source_ldap
     foreign_class: '::Puppet::Provider::ForemanAuthSourceLdap::ForemanAuthSourceLdap'

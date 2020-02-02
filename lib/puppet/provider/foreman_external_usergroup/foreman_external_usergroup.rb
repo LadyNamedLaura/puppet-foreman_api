@@ -9,7 +9,7 @@ module ::Puppet::Provider::ForemanExternalUsergroup
       @endpoint ||= Endpoint.new(
         url: '/api/usergroups/:usergroup_id/external_usergroups',
         detailurl: '/api/usergroups/:usergroup_id/external_usergroups/:id',
-        composite_namevar: [:usergroup, :name],
+        composite_namevar: [:usergroup, :ldapname],
         attributes: [
           AttrDefinition.new(:id, 'id', "id"),
           ForeignKeyAttrDefinition.new(
@@ -18,7 +18,7 @@ module ::Puppet::Provider::ForemanExternalUsergroup
             "usergroup_id",
             ::Puppet::Provider::ForemanUsergroup::ForemanUsergroup,
           ),
-          AttrDefinition.new(:name, 'name', "external_usergroup[name]"),
+          AttrDefinition.new(:ldapname, 'name', "external_usergroup[name]"),
           ForeignKeyAttrDefinition.new(
             :auth_source,
             'auth_source_ldap',

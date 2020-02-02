@@ -24,10 +24,12 @@ Puppet::ResourceApi.register_type(
     compute_profile: {
       type:      "Variant[String,Integer]",
       desc:      "",
+      behaviour: :namevar,
     },
     compute_resource: {
       type:      "Variant[String,Integer]",
       desc:      "",
+      behaviour: :namevar,
     },
     vm_attrs: {
       type:      "Hash",

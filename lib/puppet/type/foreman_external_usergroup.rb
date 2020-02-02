@@ -7,7 +7,7 @@ Puppet::ResourceApi.register_type(
     EOS
   title_patterns: [
     {
-      pattern: %r{^(?<usergroup>.*[^/])/(?<name>.*[^/])$},
+      pattern: %r{^(?<usergroup>.*[^/])/(?<ldapname>.*[^/])$},
     },
   ],
   attributes: {
@@ -24,8 +24,9 @@ Puppet::ResourceApi.register_type(
     usergroup: {
       type:      "Variant[String,Integer]",
       desc:      "ID or name of user group",
+      behaviour: :namevar,
     },
-    name: {
+    ldapname: {
       type:      "String",
       desc:      "External user group name",
       behaviour: :namevar,
