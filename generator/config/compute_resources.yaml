@@ -2,6 +2,7 @@ overrides:
   provider:
     puppetname: compute_provider
   password:
-    behaviour: init_only
+    # we set this as a parameter, because we can't get it back from the api
+    behaviour: :parameter
   uuid:
     absent: true

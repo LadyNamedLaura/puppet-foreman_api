@@ -40,7 +40,7 @@ Puppet::ResourceApi.register_type(
     account_password: {
       type:      "Optional[String]",
       desc:      "required if onthefly_register is true",
-      behaviour: :init_only,
+      behaviour: :parameter,
     },
     attr_login: {
       type:      "Optional[String]",

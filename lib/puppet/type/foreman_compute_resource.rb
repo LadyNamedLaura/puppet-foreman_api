@@ -40,7 +40,7 @@ Puppet::ResourceApi.register_type(
     password: {
       type:      "Optional[String]",
       desc:      "Password for oVirt, EC2, VMware, OpenStack. Secret key for EC2",
-      behaviour: :init_only,
+      behaviour: :parameter,
     },
     datacenter: {
       type:      "Optional[String]",
