@@ -12,8 +12,9 @@ Puppet::ResourceApi.register_type(
       default: 'present',
     },
     id: {
-      type:      "Numeric",
-      desc:      "",
+      type:      "Integer",
+      desc:      "internal numerical id",
+      behaviour: :read_only,
     },
     name: {
       type:      "String",

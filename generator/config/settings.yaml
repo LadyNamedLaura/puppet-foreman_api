@@ -9,6 +9,6 @@ extra:
     behaviour: :namevar
 overrides:
   id:
-    type: Numeric
+    absent: true
   value:
     type: Data
