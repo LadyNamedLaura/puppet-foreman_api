@@ -16,7 +16,6 @@ module PuppetX
         @api
       end
       def self.request(method, path, params = {}, data = nil, headers = {})
-        p "Request #{method} #{path} (#{params}|#{data})"
         r = api.request(method, path, params, data, headers)
         raise Puppet::Error, "failed to #{method.to_s.upcase} \"#{path}\": #{api.error_message(r)} (#{r})" unless api.success?(r)
         JSON.load(r.body)
@@ -349,8 +348,7 @@ module PuppetX
               end
               results += res
             rescue Exception => e
-              pp e
-              p("failed to load #{url.path}")
+              # TODO: loging
             end
           end
         end
