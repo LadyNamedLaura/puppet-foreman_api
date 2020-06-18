@@ -96,10 +96,12 @@ module PuppetX
 
       def set_from_puppet(hash)
         return :undefined unless hash.key? puppetname
+        return :undefined if hash[readname].nil?
         hash[puppetname]
       end
 
       def get_for_api(value)
+        return Hash[] if value == :undefined
         return Hash[] if writename.nil?
         Hash[writename, value]
       end
@@ -135,11 +137,13 @@ module PuppetX
 
       def set_from_puppet(hash)
         return :undefined unless hash.key? puppetname
+        return :undefined if hash[puppetname].nil?
         _to_id(super(hash))
       end
 
       def set_from_api(hash)
         return :undefined unless hash.key? readname
+        return :undefined if hash[readname].nil?
         hash[readname].is_a?(Hash) ? hash[readname]['id'].to_i : hash[readname].to_i
       end
     end
@@ -156,6 +160,7 @@ module PuppetX
 
       def set_from_api(hash)
         return :undefined unless hash.key? readname
+        return :undefined if hash[readname].nil?
         hash[readname].map do |e|
           e.is_a?(Hash) ? e['id'].to_i : e.to_i
         end
