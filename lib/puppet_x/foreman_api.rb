@@ -96,7 +96,7 @@ module PuppetX
 
       def set_from_puppet(hash)
         return :undefined unless hash.key? puppetname
-        return :undefined if hash[readname].nil?
+        return :undefined if hash[puppetname].nil?
         hash[puppetname]
       end
 
@@ -124,7 +124,6 @@ module PuppetX
       end
 
       def _to_name(id)
-        return nil if id.nil?
         return id unless @foreign_provider.endpoint.instances(:id).key? id
         instance = @foreign_provider.endpoint.instances(:id)[id]
         return instance.get(:name, :puppet) if instance.get(:name, :puppet)
