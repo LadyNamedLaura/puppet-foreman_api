@@ -5,6 +5,8 @@ require 'puppet/provider/foreman_smart_proxy/foreman_smart_proxy'
 require 'puppet/provider/foreman_smart_proxy/foreman_smart_proxy'
 require 'puppet/provider/foreman_smart_proxy/foreman_smart_proxy'
 require 'puppet/provider/foreman_smart_proxy/foreman_smart_proxy'
+require 'puppet/provider/foreman_smart_proxy/foreman_smart_proxy'
+require 'puppet/provider/foreman_smart_proxy/foreman_smart_proxy'
 require 'puppet/provider/foreman_location/foreman_location'
 require 'puppet/provider/foreman_organization/foreman_organization'
 
@@ -21,6 +23,7 @@ module ::Puppet::Provider::ForemanSubnet
           AttrDefinition.new(:description, 'description', "subnet[description]"),
           AttrDefinition.new(:network_type, 'network_type', "subnet[network_type]"),
           AttrDefinition.new(:network, 'network', "subnet[network]"),
+          AttrDefinition.new(:cidr, 'cidr', "subnet[cidr]"),
           AttrDefinition.new(:mask, 'mask', "subnet[mask]"),
           AttrDefinition.new(:gateway, 'gateway', "subnet[gateway]"),
           AttrDefinition.new(:dns_primary, 'dns_primary', "subnet[dns_primary]"),
@@ -56,6 +59,12 @@ module ::Puppet::Provider::ForemanSubnet
             ::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy,
           ),
           ForeignKeyAttrDefinition.new(
+            :externalipam,
+            'externalipam_id',
+            "subnet[externalipam_id]",
+            ::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy,
+          ),
+          ForeignKeyAttrDefinition.new(
             :dns,
             'dns_id',
             "subnet[dns_id]",
@@ -65,6 +74,12 @@ module ::Puppet::Provider::ForemanSubnet
             :template,
             'template_id',
             "subnet[template_id]",
+            ::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy,
+          ),
+          ForeignKeyAttrDefinition.new(
+            :discovery,
+            'discovery_id',
+            "subnet[discovery_id]",
             ::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy,
           ),
           AttrDefinition.new(:boot_mode, 'boot_mode', "subnet[boot_mode]"),

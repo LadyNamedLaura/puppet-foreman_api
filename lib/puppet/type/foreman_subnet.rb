@@ -33,8 +33,12 @@ Puppet::ResourceApi.register_type(
       type:      "String",
       desc:      "Subnet network",
     },
+    cidr: {
+      type:      "Optional[String]",
+      desc:      "Network prefix in CIDR notation",
+    },
     mask: {
-      type:      "String",
+      type:      "Optional[String]",
       desc:      "Netmask for this subnet",
     },
     gateway: {
@@ -51,7 +55,7 @@ Puppet::ResourceApi.register_type(
     },
     ipam: {
       type:      "Optional[String]",
-      desc:      "<p>IP Address auto suggestion mode for this subnet, valid values are “DHCP”,\n“Internal DB”, “None”</p>",
+      desc:      "IP Address auto suggestion mode for this subnet.",
     },
     from: {
       type:      "Optional[String]",
@@ -85,6 +89,10 @@ Puppet::ResourceApi.register_type(
       type:      "Optional[Variant[String,Integer]]",
       desc:      "HTTPBoot Proxy ID to use within this subnet",
     },
+    externalipam: {
+      type:      "Optional[Variant[String,Integer]]",
+      desc:      "External IPAM Proxy ID to use within this subnet",
+    },
     dns: {
       type:      "Optional[Variant[String,Integer]]",
       desc:      "DNS Proxy ID to use within this subnet",
@@ -93,9 +101,13 @@ Puppet::ResourceApi.register_type(
       type:      "Optional[Variant[String,Integer]]",
       desc:      "Template HTTP(S) Proxy ID to use within this subnet",
     },
+    discovery: {
+      type:      "Optional[Variant[String,Integer]]",
+      desc:      "<p>ID of Discovery Proxy to use within this subnet for managing connection to\ndiscovered hosts</p>",
+    },
     boot_mode: {
       type:      "Optional[String]",
-      desc:      "<p>Default boot mode for interfaces assigned to this subnet, valid values are\n“Static”, “DHCP”</p>",
+      desc:      "Default boot mode for interfaces assigned to this subnet.",
     },
     subnet_parameters_attributes: {
       type:      "Optional[Array]",

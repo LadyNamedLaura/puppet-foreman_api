@@ -61,6 +61,14 @@ Puppet::ResourceApi.register_type(
       type:      "Optional[Array]",
       desc:      "Selectable values for user inputs",
     },
+    default: {
+      type:      "Optional[String]",
+      desc:      "Default value for user input",
+    },
+    hidden_value: {
+      type:      "Optional[Boolean]",
+      desc:      "<p>The value contains sensitive information and shouldn not be normally\nvisible, useful e.g. for passwords</p>",
+    },
     value_type: {
       type:      "Optional[String]",
       desc:      "Value type, defaults to plain",

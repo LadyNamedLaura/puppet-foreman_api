@@ -13,6 +13,7 @@ module ::Puppet::Provider::ForemanPtable
         attributes: [
           AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "ptable[name]"),
+          AttrDefinition.new(:description, 'description', "ptable[description]"),
           AttrDefinition.new(:layout, 'layout', "ptable[layout]"),
           AttrDefinition.new(:snippet, 'snippet', "ptable[snippet]"),
           AttrDefinition.new(:audit_comment, 'audit_comment', "ptable[audit_comment]"),

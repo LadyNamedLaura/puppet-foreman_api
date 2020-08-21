@@ -10,9 +10,15 @@ overrides:
   httpboot_id:
     foreign_class: '::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy'
     requires: puppet/provider/foreman_smart_proxy/foreman_smart_proxy
+  externalipam_id:
+    foreign_class: '::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy'
+    requires: puppet/provider/foreman_smart_proxy/foreman_smart_proxy
   dns_id:
     foreign_class: '::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy'
     requires: puppet/provider/foreman_smart_proxy/foreman_smart_proxy
   template_id:
+    foreign_class: '::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy'
+    requires: puppet/provider/foreman_smart_proxy/foreman_smart_proxy
+  discovery_id:
     foreign_class: '::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy'
     requires: puppet/provider/foreman_smart_proxy/foreman_smart_proxy

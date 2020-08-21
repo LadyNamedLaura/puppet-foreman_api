@@ -1,4 +1,5 @@
 require 'puppet_x/foreman_api'
+require 'puppet/provider/foreman_location/foreman_location'
 
 module ::Puppet::Provider::ForemanOrganization
   class ForemanOrganization < ::PuppetX::ForemanApi::EndpointProvider
@@ -18,6 +19,13 @@ module ::Puppet::Provider::ForemanOrganization
             ::Puppet::Provider::ForemanOrganization::ForemanOrganization,
           ),
           AttrDefinition.new(:ignore_types, 'ignore_types', "organization[ignore_types]"),
+          ForeignKeyArrayAttrDefinition.new(
+            :locations,
+            'locations',
+            "organization[location_ids]",
+            ::Puppet::Provider::ForemanLocation::ForemanLocation,
+            detailed: true,
+          ),
         ],
       )
       @endpoint

@@ -33,6 +33,10 @@ Puppet::ResourceApi.register_type(
       type:      "Optional[Array]",
       desc:      "List of resources types that will be automatically associated",
     },
+    locations: {
+      type:      "Optional[Array[Variant[String,Integer]]]",
+      desc:      "Associated location IDs",
+    },
   }
 
 )

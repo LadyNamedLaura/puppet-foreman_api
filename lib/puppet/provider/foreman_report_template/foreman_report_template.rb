@@ -12,6 +12,7 @@ module ::Puppet::Provider::ForemanReportTemplate
         attributes: [
           AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "report_template[name]"),
+          AttrDefinition.new(:description, 'description', "report_template[description]"),
           AttrDefinition.new(:template, 'template', "report_template[template]"),
           AttrDefinition.new(:snippet, 'snippet', "report_template[snippet]"),
           AttrDefinition.new(:audit_comment, 'audit_comment', "report_template[audit_comment]"),

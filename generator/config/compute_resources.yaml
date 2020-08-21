@@ -6,3 +6,5 @@ overrides:
     behaviour: :parameter
   uuid:
     absent: true
+  project_domain_id:
+    absent: true

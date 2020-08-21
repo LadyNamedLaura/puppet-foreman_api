@@ -21,6 +21,10 @@ Puppet::ResourceApi.register_type(
       desc:      "template name",
       behaviour: :namevar,
     },
+    description: {
+      type:      "Optional[String]",
+      desc:      "",
+    },
     template: {
       type:      "String",
       desc:      "",

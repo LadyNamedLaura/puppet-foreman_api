@@ -14,6 +14,7 @@ module ::Puppet::Provider::ForemanProvisioningTemplate
         attributes: [
           AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', "provisioning_template[name]"),
+          AttrDefinition.new(:description, 'description', "provisioning_template[description]"),
           AttrDefinition.new(:template, 'template', "provisioning_template[template]"),
           AttrDefinition.new(:snippet, 'snippet', "provisioning_template[snippet]"),
           AttrDefinition.new(:audit_comment, 'audit_comment', "provisioning_template[audit_comment]"),

@@ -26,6 +26,8 @@ module ::Puppet::Provider::ForemanTemplateInput
           AttrDefinition.new(:puppet_class_name, 'puppet_class_name', "template_input[puppet_class_name]"),
           AttrDefinition.new(:puppet_parameter_name, 'puppet_parameter_name', "template_input[puppet_parameter_name]"),
           AttrDefinition.new(:options, 'options', "template_input[options]"),
+          AttrDefinition.new(:default, 'default', "template_input[default]"),
+          AttrDefinition.new(:hidden_value, 'hidden_value', "template_input[hidden_value]"),
           AttrDefinition.new(:value_type, 'value_type', "template_input[value_type]"),
           AttrDefinition.new(:resource_type, 'resource_type', "template_input[resource_type]"),
         ],
