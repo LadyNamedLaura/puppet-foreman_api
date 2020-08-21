@@ -11,16 +11,10 @@ module ::Puppet::Provider::ForemanFilter
       @endpoint ||= Endpoint.new(
         url: '/api/filters',
         detailurl: '/api/filters/:id',
-        composite_namevar: [:role, :_permissions],
+        composite_namevar: [:role, :resource_type],
         attributes: [
           AttrDefinition.new(:id, 'id', "id"),
-          ForeignKeyArrayAttrDefinition.new(
-            :_permissions,
-            'permissions',
-            nil,
-            ::Puppet::Provider::ForemanPermission::ForemanPermission,
-            detailed: true,
-          ),
+          AttrDefinition.new(:resource_type, 'resource_type_label', nil),
           ForeignKeyAttrDefinition.new(
             :role,
             'role',

@@ -1,18 +1,16 @@
 composite_namevar:
   - role
-  - _permissions
+  - resource_type
 
 extra:
-  _permissions:
-    puppetname: "_permissions"
-    readname: "permissions"
+  resource_type:
+    puppetname: "resource_type"
+    readname: "resource_type_label"
     writename: ~
     behaviour: :namevar
     type: "Data"
     desc: ""
-    definition_class: "ForeignKeyArrayAttrDefinition"
-    foreign_class: "::Puppet::Provider::ForemanPermission::ForemanPermission"
-    detailed: true
+    definition_class: AttrDefinition
 
 overrides:
   role_id:

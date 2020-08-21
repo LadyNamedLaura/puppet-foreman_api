@@ -7,7 +7,7 @@ Puppet::ResourceApi.register_type(
     EOS
   title_patterns: [
     {
-      pattern: %r{^(?<role>.*[^/])/(?<_permissions>.*[^/])$},
+      pattern: %r{^(?<role>.*[^/])/(?<resource_type>.*[^/])$},
     },
   ],
   attributes: {
@@ -21,7 +21,7 @@ Puppet::ResourceApi.register_type(
       desc:      "internal numerical id",
       behaviour: :read_only,
     },
-    _permissions: {
+    resource_type: {
       type:      "Data",
       desc:      "",
       behaviour: :namevar,
