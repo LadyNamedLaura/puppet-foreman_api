@@ -47,15 +47,11 @@ Puppet::ResourceApi.register_type(
     },
     password_hash: {
       type:      "Optional[String]",
-      desc:      "Root password hash function to use, one of MD5, SHA256, SHA512, Base64",
+      desc:      "Root password hash function to use",
     },
     architectures: {
       type:      "Optional[Array[Variant[String,Integer]]]",
       desc:      "IDs of associated architectures",
-    },
-    config_templates: {
-      type:      "Optional[Array[Variant[String,Integer]]]",
-      desc:      "IDs of associated provisioning templates",
     },
     provisioning_templates: {
       type:      "Optional[Array[Variant[String,Integer]]]",

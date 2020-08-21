@@ -16,10 +16,6 @@ Puppet::ResourceApi.register_type(
       desc:      "internal numerical id",
       behaviour: :read_only,
     },
-    config_template: {
-      type:      "Optional[Variant[String,Integer]]",
-      desc:      "ID of config template",
-    },
     provisioning_template: {
       type:      "Optional[Variant[String,Integer]]",
       desc:      "ID of config template",

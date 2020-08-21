@@ -31,10 +31,6 @@ Puppet::ResourceApi.register_type(
       desc:      "",
       behaviour: :namevar,
     },
-    config_template: {
-      type:      "Optional[Variant[String,Integer]]",
-      desc:      "ID of provisioning template",
-    },
     provisioning_template: {
       type:      "Optional[Variant[String,Integer]]",
       desc:      "ID of provisioning template",

@@ -1,6 +1,5 @@
 require 'puppet_x/foreman_api'
 require 'puppet/provider/foreman_architecture/foreman_architecture'
-require 'puppet/provider/foreman_config_template/foreman_config_template'
 require 'puppet/provider/foreman_provisioning_template/foreman_provisioning_template'
 require 'puppet/provider/foreman_medium/foreman_medium'
 require 'puppet/provider/foreman_ptable/foreman_ptable'
@@ -27,13 +26,6 @@ module ::Puppet::Provider::ForemanOperatingsystem
             'architectures',
             "operatingsystem[architecture_ids]",
             ::Puppet::Provider::ForemanArchitecture::ForemanArchitecture,
-            detailed: true,
-          ),
-          ForeignKeyArrayAttrDefinition.new(
-            :config_templates,
-            'config_templates',
-            "operatingsystem[config_template_ids]",
-            ::Puppet::Provider::ForemanConfigTemplate::ForemanConfigTemplate,
             detailed: true,
           ),
           ForeignKeyArrayAttrDefinition.new(
