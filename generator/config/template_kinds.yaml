@@ -1,0 +1,12 @@
+---
+# puppet can't do anything with this, but needed for foreign keys.
+provider_only: true
+
+extra:
+  name:
+    puppetname: "name"
+    readname: "name"
+    writename: ~
+    type: "String"
+    desc: ""
+    definition_class: AttrDefinition

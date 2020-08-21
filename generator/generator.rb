@@ -71,13 +71,15 @@ class Endpoint
     _initialize(filename, **config)
   end
 
-  def _initialize(filename, typename: nil, composite_namevar: nil, overrides: {}, apiurl: nil, detailurl: nil, extra: {})
+  def _initialize(filename, typename: nil, composite_namevar: nil, overrides: {}, apiurl: nil, detailurl: nil, provider_only: false, extra: {})
     file = File.open "#{Config.apidocbasepath}/#{filename}.json"
     data = JSON.load file
     file.close
     data = data['docs']['resources'][0]
     @name = data['name']
     @methods = array_to_hash(data['methods'], 'name')
+    p '---------'
+    p filename
     p '---------'
     @singularname = if filename[-1] == 's'
                       filename[0..-2]
@@ -98,13 +100,16 @@ class Endpoint
     @overrides = overrides
     @apiurl = @methods['index']['apis'][0]['api_url']
     @apiurl = apiurl unless apiurl.nil?
-    @detailurl = @methods['show']['apis'][0]['api_url']
+    @detailurl = @methods.dig('show','apis',0,'api_url')
     @detailurl = detailurl unless detailurl.nil?
+    @provider_only = provider_only
 
     attributes = if @methods.key? 'create'
                    array_to_hash(@methods['create']['params'], 'name')
-                 else
+                 elsif @methods.key? 'update'
                    array_to_hash(@methods['update']['params'], 'name')
+                 else
+                   Hash.new()
                  end
     attributes.delete('location_id')
     attributes.delete('organization_id')
@@ -161,12 +166,13 @@ class Endpoint
       if hash.key?(:absent) && hash[:absent]
         next nil
       end
-      [name, hash]
+      [hash[:puppetname], hash]
     }.compact.to_h)
     pp @attributes
   end
 
   def gentype
+    return if @provider_only
     p "../lib/puppet/type/#{@pathname}.rb"
     File.open("../lib/puppet/type/#{@pathname}.rb", 'w') do |f|
       f.write Config.typetemplate.result(binding)

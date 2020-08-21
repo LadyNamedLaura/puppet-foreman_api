@@ -6,10 +6,9 @@ module ::Puppet::Provider::ForemanTemplateKind
     def self.endpoint
       @endpoint ||= Endpoint.new(
         url: '/api/template_kinds',
+        detailurl: '',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
-          AttrDefinition.new(:updated_at, 'updated_at', nil),
-          AttrDefinition.new(:created_at, 'created_at', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', nil),
         ],
       )

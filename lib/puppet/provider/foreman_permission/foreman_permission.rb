@@ -6,10 +6,10 @@ module ::Puppet::Provider::ForemanPermission
     def self.endpoint
       @endpoint ||= Endpoint.new(
         url: '/api/permissions',
+        detailurl: '/api/permissions/:id',
         attributes: [
-          AttrDefinition.new(:id, 'id', nil),
+          AttrDefinition.new(:id, 'id', "id"),
           AttrDefinition.new(:name, 'name', nil),
-          AttrDefinition.new(:resource_type, 'resource_type', nil),
         ],
       )
       @endpoint
