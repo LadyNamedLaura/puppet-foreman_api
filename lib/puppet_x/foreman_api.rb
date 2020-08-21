@@ -149,7 +149,7 @@ module PuppetX
     class ForeignKeyArrayAttrDefinition < ForeignKeyAttrDefinition
       def get_for_puppet(values)
         return nil unless values
-        Hash[puppetname, values.map { |value| _to_name(value) }]
+        Hash[puppetname, values.map { |value| _to_name(value) }.sort]
       end
 
       def set_from_puppet(hash)
@@ -405,6 +405,33 @@ module PuppetX
       def delete(_context, name)
         obj = self.class.endpoint.instances(:name)[name]
         obj.delete
+      end
+
+      def _canonicalize_wildcard(input, others, parent, name)
+        input.map do | item |
+          next [ item ] unless item.end_with? '/*'
+          others.select do | other |
+            parent.call(other) == item[0..-3]
+          end.map do | other |
+            name.call(other)
+          end
+        end.flatten.uniq.sort
+      end
+      def canonicalize(_context, resources)
+        res = resources[0]
+        if res[:locations]
+          # late require to avoid looping require
+          require 'puppet/provider/foreman_location/foreman_location'
+          all_locations = Puppet::Provider::ForemanLocation::ForemanLocation.new().get(nil)
+          res[:locations] = _canonicalize_wildcard(res[:locations], all_locations, ->(x) {x[:parent]}, ->(x) {x[:name]})
+        end
+        if res[:organizations]
+          # late require to avoid looping require
+          require 'puppet/provider/foreman_organization/foreman_organization'
+          all_organizations = Puppet::Provider::ForemanOrganization::ForemanOrganization.new().get(nil)
+          res[:organizations] = _canonicalize_wildcard(res[:organizations], all_organizations, ->(x) {x[:parent]}, ->(x) {x[:name]})
+        end
+        [res]
       end
     end
   end

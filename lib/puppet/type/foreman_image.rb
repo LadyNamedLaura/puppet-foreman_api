@@ -10,6 +10,7 @@ Puppet::ResourceApi.register_type(
       pattern: %r{^(?<compute_resource>.*[^/])/(?<name>.*[^/])$},
     },
   ],
+  features: ['canonicalize'],
   attributes: {
     ensure: {
       type:    'Enum[present, absent]',

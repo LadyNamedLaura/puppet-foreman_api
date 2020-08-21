@@ -10,6 +10,7 @@ Puppet::ResourceApi.register_type(
       pattern: %r{^(?<login>.*[^/])$},
     },
   ],
+  features: ['canonicalize'],
   attributes: {
     ensure: {
       type:    'Enum[present, absent]',

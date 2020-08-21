@@ -5,6 +5,7 @@ Puppet::ResourceApi.register_type(
   docs: <<-EOS,
       This type provides Puppet with the capabilities to manage foreman Media
     EOS
+  features: ['canonicalize'],
   attributes: {
     ensure: {
       type:    'Enum[present, absent]',

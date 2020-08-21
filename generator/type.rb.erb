@@ -16,6 +16,7 @@ Puppet::ResourceApi.register_type(
     },
   ],
   <%- end -%>
+  features: ['canonicalize'],
   attributes: {
     ensure: {
       type:    'Enum[present, absent]',

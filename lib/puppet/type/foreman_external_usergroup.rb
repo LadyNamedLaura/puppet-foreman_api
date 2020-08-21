@@ -10,6 +10,7 @@ Puppet::ResourceApi.register_type(
       pattern: %r{^(?<usergroup>.*[^/])/(?<ldapname>.*[^/])$},
     },
   ],
+  features: ['canonicalize'],
   attributes: {
     ensure: {
       type:    'Enum[present, absent]',
