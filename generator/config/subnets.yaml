@@ -1,6 +1,8 @@
 overrides:
   vlanid:
     type: Optional[Numeric]
+  cidr:
+    type: Optional[Numeric]
   dhcp_id:
     foreign_class: '::Puppet::Provider::ForemanSmartProxy::ForemanSmartProxy'
     requires: puppet/provider/foreman_smart_proxy/foreman_smart_proxy

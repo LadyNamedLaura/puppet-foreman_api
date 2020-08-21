@@ -35,7 +35,7 @@ Puppet::ResourceApi.register_type(
       desc:      "Subnet network",
     },
     cidr: {
-      type:      "Optional[String]",
+      type:      "Optional[Numeric]",
       desc:      "Network prefix in CIDR notation",
     },
     mask: {
