@@ -190,7 +190,12 @@ module PuppetX
           puppet: nil,
         }
         @mapped[side] = hash
-        @details_loaded = (side == :puppet)
+        @details_loaded = true
+        if side == :api
+          @details_loaded = @attrs[:api].select do | _k, a |
+            a.definition.detailed
+          end.empty?
+        end
       end
 
       def load_details

@@ -44,14 +44,6 @@ Puppet::ResourceApi.register_type(
       type:      "Optional[Array[Variant[String,Integer]]]",
       desc:      "",
     },
-    organizations: {
-      type:      "Optional[Array[Variant[String,Integer]]]",
-      desc:      "",
-    },
-    locations: {
-      type:      "Optional[Array[Variant[String,Integer]]]",
-      desc:      "",
-    },
   }
 
 )

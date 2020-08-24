@@ -15,3 +15,8 @@ extra:
 overrides:
   role_id:
     readname: role
+    detailed: false
+  location_ids:
+    absent: true
+  organization_ids:
+    absent: true
