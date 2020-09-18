@@ -27,7 +27,7 @@ module ::Puppet::Provider::ForemanFilter
             'permissions',
             "filter[permission_ids]",
             ::Puppet::Provider::ForemanPermission::ForemanPermission,
-            detailed: true,
+            detailed: false,
           ),
         ],
       )

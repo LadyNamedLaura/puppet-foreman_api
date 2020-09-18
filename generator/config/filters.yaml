@@ -20,3 +20,5 @@ overrides:
     absent: true
   organization_ids:
     absent: true
+  permission_ids:
+    detailed: false
