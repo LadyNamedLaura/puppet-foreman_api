@@ -391,6 +391,12 @@ module PuppetX
     end
 
     class EndpointProvider < Puppet::ResourceApi::SimpleProvider
+      def normalize_namevar(name)
+        return name unless name.is_a?(Hash)
+        self.class.endpoint.composite_namevar.map do |namevar|
+          name[namevar]
+        end.join('/')
+      end
       def get(_context)
         self.class.endpoint.instances.map do |_name, instance|
           { ensure: 'present' }.merge(instance.get_all(:puppet))
@@ -398,6 +404,7 @@ module PuppetX
       end
 
       def update(_context, name, should)
+        name = normalize_namevar(name)
         obj = self.class.endpoint.instances(:name)[name]
         obj.set_all(should, :puppet)
         obj.update
@@ -408,6 +415,7 @@ module PuppetX
       end
 
       def delete(_context, name)
+        name = normalize_namevar(name)
         obj = self.class.endpoint.instances(:name)[name]
         obj.delete
       end
