@@ -400,7 +400,7 @@ module PuppetX
     end
 
     class EndpointProvider < Puppet::ResourceApi::SimpleProvider
-      def get(_context)
+      def get(_context = nil)
         self.class.endpoint.instances.map do |_name, instance|
           { ensure: 'present' }.merge(instance.get_all(:puppet))
         end
@@ -436,13 +436,13 @@ module PuppetX
         if res[:locations]
           # late require to avoid looping require
           require 'puppet/provider/foreman_location/foreman_location'
-          all_locations = Puppet::Provider::ForemanLocation::ForemanLocation.new().get(nil)
+          all_locations = Puppet::Provider::ForemanLocation::ForemanLocation.new().get()
           res[:locations] = _canonicalize_wildcard(res[:locations], all_locations, ->(x) {x[:parent]}, ->(x) {x[:name]})
         end
         if res[:organizations]
           # late require to avoid looping require
           require 'puppet/provider/foreman_organization/foreman_organization'
-          all_organizations = Puppet::Provider::ForemanOrganization::ForemanOrganization.new().get(nil)
+          all_organizations = Puppet::Provider::ForemanOrganization::ForemanOrganization.new().get()
           res[:organizations] = _canonicalize_wildcard(res[:organizations], all_organizations, ->(x) {x[:parent]}, ->(x) {x[:name]})
         end
         [res]
