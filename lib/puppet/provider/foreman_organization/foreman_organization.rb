@@ -25,6 +25,7 @@ module ::Puppet::Provider::ForemanOrganization
             "organization[location_ids]",
             ::Puppet::Provider::ForemanLocation::ForemanLocation,
             detailed: true,
+            wildcardparent: :parent,
           ),
         ],
       )

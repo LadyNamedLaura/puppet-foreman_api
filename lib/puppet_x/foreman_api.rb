@@ -110,6 +110,10 @@ module PuppetX
         return :undefined unless hash.key? readname
         hash[readname]
       end
+
+      def canonicalize(resource)
+        return resource
+      end
     end
     class ForeignKeyAttrDefinition < AttrDefinition
       attr_reader :foreign_provider
@@ -147,6 +151,10 @@ module PuppetX
       end
     end
     class ForeignKeyArrayAttrDefinition < ForeignKeyAttrDefinition
+      def initialize(puppetname, readname, writename, foreign_provider, detailed: false, wildcardparent: nil)
+        super(puppetname, readname, writename, foreign_provider, detailed: detailed)
+        @wildcardparent = wildcardparent
+      end
       def get_for_puppet(values)
         return nil unless values
         Hash[puppetname, values.map { |value| _to_name(value) }.sort]
@@ -163,6 +171,21 @@ module PuppetX
         hash[readname].map do |e|
           e.is_a?(Hash) ? e['id'].to_i : e.to_i
         end
+      end
+
+      def canonicalize(resource)
+        return resource unless resource[puppetname]
+        arr = Array(resource[puppetname])
+        if @wildcardparent
+          others = @foreign_provider.new().get()
+          arr.map! do | item |
+            next item unless item.end_with? '/*'
+            others.enum_each_with_object([]) do | other, a |
+              a << other[:name] if other[@wildcardparent] == item[0..-3]
+            end
+          end.flatten
+        end
+        resource[puppetname] = arr.uniq!.sort!
       end
     end
 
@@ -397,6 +420,12 @@ module PuppetX
         obj.set_all(puppet_hash, :puppet)
         obj.create
       end
+
+      def canonicalize(resource)
+        @attributes.reduce(resource) do |res, attribute|
+          attribute.canonicalize(res)
+        end
+      end
     end
 
     class EndpointProvider < Puppet::ResourceApi::SimpleProvider
@@ -421,31 +450,8 @@ module PuppetX
         obj.delete
       end
 
-      def _canonicalize_wildcard(input, others, parent, name)
-        input.map do | item |
-          next [ item ] unless item.end_with? '/*'
-          others.select do | other |
-            parent.call(other) == item[0..-3]
-          end.map do | other |
-            name.call(other)
-          end
-        end.flatten.uniq.sort
-      end
       def canonicalize(_context, resources)
-        res = resources[0]
-        if res[:locations]
-          # late require to avoid looping require
-          require 'puppet/provider/foreman_location/foreman_location'
-          all_locations = Puppet::Provider::ForemanLocation::ForemanLocation.new().get()
-          res[:locations] = _canonicalize_wildcard(res[:locations], all_locations, ->(x) {x[:parent]}, ->(x) {x[:name]})
-        end
-        if res[:organizations]
-          # late require to avoid looping require
-          require 'puppet/provider/foreman_organization/foreman_organization'
-          all_organizations = Puppet::Provider::ForemanOrganization::ForemanOrganization.new().get()
-          res[:organizations] = _canonicalize_wildcard(res[:organizations], all_organizations, ->(x) {x[:parent]}, ->(x) {x[:name]})
-        end
-        [res]
+        [self.class.endpoint.canonicalize(resources[0])]
       end
     end
   end

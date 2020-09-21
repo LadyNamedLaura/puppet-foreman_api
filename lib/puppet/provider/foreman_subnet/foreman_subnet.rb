@@ -90,6 +90,7 @@ module ::Puppet::Provider::ForemanSubnet
             "subnet[location_ids]",
             ::Puppet::Provider::ForemanLocation::ForemanLocation,
             detailed: true,
+            wildcardparent: :parent,
           ),
           ForeignKeyArrayAttrDefinition.new(
             :organizations,
@@ -97,6 +98,7 @@ module ::Puppet::Provider::ForemanSubnet
             "subnet[organization_ids]",
             ::Puppet::Provider::ForemanOrganization::ForemanOrganization,
             detailed: true,
+            wildcardparent: :parent,
           ),
         ],
       )

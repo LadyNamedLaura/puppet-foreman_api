@@ -147,6 +147,9 @@ class Endpoint
                     foreign_class: "::Puppet::Provider::#{rubyname}::#{rubyname}",
                     requires: "puppet/provider/#{typename}/#{typename}",
                     detailed: true)
+        if typename == "foreman_location" || typename == "foreman_organization"
+          hash[:wildcardparent] = :parent
+        end
       elsif %r{_id$} =~ name
         typename = name.gsub(%r{_id$}, '')
         typename = "foreman_#{typename}"

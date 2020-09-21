@@ -49,6 +49,7 @@ module ::Puppet::Provider::ForemanUser
             "user[location_ids]",
             ::Puppet::Provider::ForemanLocation::ForemanLocation,
             detailed: true,
+            wildcardparent: :parent,
           ),
           ForeignKeyArrayAttrDefinition.new(
             :organizations,
@@ -56,6 +57,7 @@ module ::Puppet::Provider::ForemanUser
             "user[organization_ids]",
             ::Puppet::Provider::ForemanOrganization::ForemanOrganization,
             detailed: true,
+            wildcardparent: :parent,
           ),
         ],
       )

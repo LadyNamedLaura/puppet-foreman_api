@@ -24,6 +24,7 @@ module ::Puppet::Provider::ForemanReportTemplate
             "report_template[location_ids]",
             ::Puppet::Provider::ForemanLocation::ForemanLocation,
             detailed: true,
+            wildcardparent: :parent,
           ),
           ForeignKeyArrayAttrDefinition.new(
             :organizations,
@@ -31,6 +32,7 @@ module ::Puppet::Provider::ForemanReportTemplate
             "report_template[organization_ids]",
             ::Puppet::Provider::ForemanOrganization::ForemanOrganization,
             detailed: true,
+            wildcardparent: :parent,
           ),
         ],
       )

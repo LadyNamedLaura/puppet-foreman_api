@@ -27,6 +27,7 @@ module ::Puppet::Provider::ForemanDomain
             "domain[location_ids]",
             ::Puppet::Provider::ForemanLocation::ForemanLocation,
             detailed: true,
+            wildcardparent: :parent,
           ),
           ForeignKeyArrayAttrDefinition.new(
             :organizations,
@@ -34,6 +35,7 @@ module ::Puppet::Provider::ForemanDomain
             "domain[organization_ids]",
             ::Puppet::Provider::ForemanOrganization::ForemanOrganization,
             detailed: true,
+            wildcardparent: :parent,
           ),
         ],
       )

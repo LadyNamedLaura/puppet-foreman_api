@@ -30,6 +30,9 @@ module ::Puppet::Provider::<%= @rubyname %>
             <%- if attr.key? :detailed -%>
             detailed: <%= attr[:detailed].inspect %>,
             <%- end -%>
+            <%- if attr.key? :wildcardparent -%>
+            wildcardparent: <%= attr[:wildcardparent].inspect %>,
+            <%- end -%>
           ),
           <%- else -%>
           <%= attr[:definition_class] %>.new(:<%= attr[:puppetname] %>, '<%= attr[:readname] %>', <%= attr[:writename].inspect %>),

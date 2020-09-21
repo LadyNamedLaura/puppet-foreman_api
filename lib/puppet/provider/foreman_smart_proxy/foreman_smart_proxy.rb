@@ -19,6 +19,7 @@ module ::Puppet::Provider::ForemanSmartProxy
             "smart_proxy[location_ids]",
             ::Puppet::Provider::ForemanLocation::ForemanLocation,
             detailed: true,
+            wildcardparent: :parent,
           ),
           ForeignKeyArrayAttrDefinition.new(
             :organizations,
@@ -26,6 +27,7 @@ module ::Puppet::Provider::ForemanSmartProxy
             "smart_proxy[organization_ids]",
             ::Puppet::Provider::ForemanOrganization::ForemanOrganization,
             detailed: true,
+            wildcardparent: :parent,
           ),
         ],
       )
