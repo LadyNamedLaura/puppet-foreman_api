@@ -180,12 +180,14 @@ module PuppetX
           others = @foreign_provider.new().get()
           arr.map! do | item |
             next item unless item.end_with? '/*'
-            others.enum_each_with_object([]) do | other, a |
+            others.each_with_object([]) do | other, a |
               a << other[:name] if other[@wildcardparent] == item[0..-3]
             end
-          end.flatten
+          end
+          arr.flatten!
         end
-        resource[puppetname] = arr.uniq!.sort!
+        resource[puppetname] = arr.uniq.sort
+        resource
       end
     end
 
@@ -402,7 +404,7 @@ module PuppetX
 
       def instance(name)
         if name.is_a?(Hash)
-          name = self.class.endpoint.composite_namevar.map do |namevar|
+          name = @composite_namevar.map do |namevar|
             name[namevar]
           end.join('/')
         end
