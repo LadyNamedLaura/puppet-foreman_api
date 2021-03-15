@@ -1,6 +1,11 @@
 require 'puppet/resource_api/simple_provider'
-require 'oauth'
 require 'json'
+# don't crash the whole puppet stack if we miss a gem
+begin
+  require 'oauth'
+rescue LoadError
+  Puppet.warning("#{__FILE__}:#{__LINE__}: oauth gem was not found")
+end
 
 module PuppetX
   module ForemanApi
@@ -454,6 +459,10 @@ module PuppetX
 
       def canonicalize(_context, resources)
         [self.class.endpoint.canonicalize(resources[0])]
+      rescue Puppet::Error, NameError => e
+        # complain when we're missing gems
+        Puppet.log_exception(e)
+        resources
       end
     end
   end
