@@ -34,6 +34,8 @@ Puppet::ResourceApi.register_type(
       <%- end -%>
     },
     <%- } -%>
-  }
-
+  },
+  autorequire: {
+    file: '/etc/foreman/foreman_api.yaml',
+  },
 )
