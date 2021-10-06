@@ -17,6 +17,13 @@ module PuppetX
             base_url: 'http://localhost:3000/',
             effective_user: 'admin',
           }
+          configfile = '/etc/foreman/foreman_api.yaml'
+          if File.exist? configfile
+            config = YAML.load(File.read(configfile))
+            # Symbolise hash keys
+            config = Hash[config.map { |k,v| [k.to_sym, v] }]
+            @api.resource.merge! config
+          end
         end
         @api
       end
